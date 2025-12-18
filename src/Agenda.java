@@ -113,6 +113,7 @@ public class Agenda {
                 }
             } else {
                 System.out.println("El contacto no existe");
+                break;
             }
         }
     }
