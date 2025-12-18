@@ -16,9 +16,11 @@ public class Main {
             Contacto contacto10 = new Contacto("Valetina","Diaz",3152528596L);
             Contacto contacto11 = new Contacto("Miguel","Diaz",3152528596L);
 
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Ingrese la cantidad de contactos que desea agregar a la agenda: ");
-        Agenda agenda1 = new Agenda(scanner.nextInt());
+
+        //Scanner scanner = new Scanner(System.in);
+        Agenda agenda1 = new Agenda();
+        //agenda1.menuAgenda();
+
         agenda1.anadirContacto(contacto1);
         agenda1.anadirContacto(contacto2);
         agenda1.anadirContacto(contacto3);

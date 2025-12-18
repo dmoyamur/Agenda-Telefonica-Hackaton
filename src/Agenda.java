@@ -107,65 +107,57 @@ public class Agenda {
         }
     }
 
-public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+    public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
 
-    for (int i = 0; i < contactos.length; i++) {
-        if (contactos[i] != null) {
-            if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
-            contactos[i].setTelefono(Long.parseLong(nuevoTelefono));
-            System.out.println("Telefono modificado satisfactoriamente");
-            }
-        }
-        else {
-            System.out.println("El contacto no existe");
-        }
-    }
-}
-
-
-    public void buscaContacto (String nombre, String apellido){
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
                 if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
-                    System.out.println("El contacto existe y su teléfono es: "+contactos[i].getTelefono());
+                    contactos[i].setTelefono(Long.parseLong(nuevoTelefono));
+                    System.out.println("Telefono modificado satisfactoriamente");
                 }
-            }else {
-                System.out.println("Contacto no encontrado");
+            } else {
+                System.out.println("El contacto no existe");
             }
         }
     }
 
-    public void eliminarContacto (Contacto c){
+
+    public void buscaContacto(String nombre, String apellido) {
+        for (int i = 0; i < contactos.length; i++) {
+            if (contactos[i] != null) {
+                if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
+                    System.out.println("El contacto existe y su teléfono es: " + contactos[i].getTelefono());
+                }
+            } else {
+                System.out.println("Contacto no encontrado en la busqueda");
+                break;
+            }
+        }
+    }
+
+    public void eliminarContacto(Contacto c) {
         for (int i = 0; i < contactos.length; i++) {
             if (c.equals(contactos[i])) {
                 contactos[i] = null;
                 System.out.println("Contacto eliminado: " + c.getNombre() + " " + c.getApellido() + " " + c.getTelefono());
                 break;
             } else {
-                System.out.println("Contacto no encontrado");
+                System.out.println("Contacto no encontrado para eliminar");
+                break;
             }
-        } espacioslibres();
+        }
+        espacioslibres();
     }
 
-    //public void cantContactos(int cant){
-    //    if (cant=0){
-    //        cant =
-    //    }
-    //}
-
-
-    public void menu (){
-        Scanner scanner = new Scanner(System.in);
-
-        System.out.println("-- AGENDA TELEFONICA --");
-        System.out.println("-- OPCIONES --");
-        System.out.println("1. Agregar Contacto");
-        System.out.println("2. Mostrar Contactos");
-        System.out.println("3. Buscar Contacto");
-        System.out.println("4. Eliminar Contacto");
-        System.out.println("5. Modificar Teléfono");
-        System.out.println("6. SALIR");
-
-
+    public void asignarTamanoAgenda(int cantidad) {
+        if (cantidad > 0) {
+            System.out.println("Asigne el tamaño de la agenda si deseas un valor diferente a 10 registros: ");
+            this.cant = cantidad;
+        } else {
+            this.cant = 10;
+        }
     }
+
+
+
 }
