@@ -103,5 +103,44 @@ public class Agenda {
             agendallena();
         }
     }
+
+public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
+
+    for (int i = 0; i < contactos.length; i++) {
+
+        if (nombre.equals(contactos[i].getNombre()) && apellido.equals(contactos[i].getApellido())) {
+
+            contactos[i].setTelefono(Long.parseLong(nuevoTelefono));
+
+        } else {
+
+            System.out.println("El contacto no existe");
+
+        }
+
+    }
 }
 
+
+    public void buscaContacto (String nombre, String apellido){
+        for (int i = 0; i < contactos.length; i++) {
+            if (nombre.equals(contactos[i].getNombre()) && apellido.equals(contactos[i].getApellido())) {
+                System.out.println(contactos[i].getTelefono());
+            } else {
+                System.out.println("Contacto no encontrado");
+            }
+        }
+    }
+
+    public void eliminarContacto (Contacto c){
+        for (int i = 0; i < contactos.length; i++) {
+            if (c.equals(contactos[i])) {
+                contactos[i] = null;
+                System.out.println("Contacto eliminado: " + c.getNombre() + " " + c.getApellido() + " " + c.getTelefono());
+                break;
+            } else {
+                System.out.println("Contacto no encontrado");
+            }
+        } mostrarContactos();
+    }
+}

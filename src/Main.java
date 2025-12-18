@@ -24,16 +24,22 @@ public class Main {
         agenda1.anadirContacto(contacto2);
         agenda1.anadirContacto(contacto3);
         agenda1.anadirContacto(contacto4);
-        //agenda1.anadirContacto(contacto5);
-        //agenda1.anadirContacto(contacto6);
-        //agenda1.anadirContacto(contacto7);
-        //agenda1.anadirContacto(contacto8);
-        //agenda1.anadirContacto(contacto9);
+        agenda1.anadirContacto(contacto5);
+        agenda1.anadirContacto(contacto6);
+        agenda1.anadirContacto(contacto7);
+        agenda1.anadirContacto(contacto8);
+        agenda1.anadirContacto(contacto9);
         agenda1.anadirContacto(contacto10);
         agenda1.anadirContacto(contacto11);
 
+        agenda1.eliminarContacto(contacto1);
+
         agenda1.mostrarContactos();
+        agenda1.modificarTelefono("Juan","Diaz","3229999999");
+        agenda1.buscaContacto("Miguel","Diaz");
         agenda1.espacioslibres();
+        agenda1.agendallena();
+
 
         }
 }
