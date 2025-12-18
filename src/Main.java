@@ -16,29 +16,30 @@ public class Main {
             Contacto contacto10 = new Contacto("Valetina","Diaz",3152528596L);
             Contacto contacto11 = new Contacto("Miguel","Diaz",3152528596L);
 
-        //Scanner scanner = new Scanner(System.in);
-        //System.out.println("Ingrese la cantidad de contactos que desea agregar a la agenda: ");
-        //scanner.nextInt();
-        Agenda agenda1 = new Agenda();
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Ingrese la cantidad de contactos que desea agregar a la agenda: ");
+        Agenda agenda1 = new Agenda(scanner.nextInt());
         agenda1.anadirContacto(contacto1);
         agenda1.anadirContacto(contacto2);
         agenda1.anadirContacto(contacto3);
         agenda1.anadirContacto(contacto4);
-        agenda1.anadirContacto(contacto5);
-        agenda1.anadirContacto(contacto6);
-        agenda1.anadirContacto(contacto7);
-        agenda1.anadirContacto(contacto8);
-        agenda1.anadirContacto(contacto9);
-        agenda1.anadirContacto(contacto10);
-        agenda1.anadirContacto(contacto11);
+        //agenda1.anadirContacto(contacto5);
+        //agenda1.anadirContacto(contacto6);
+        //agenda1.anadirContacto(contacto7);
+        //agenda1.anadirContacto(contacto8);
+        //agenda1.anadirContacto(contacto9);
+        //agenda1.anadirContacto(contacto10);
+        //agenda1.anadirContacto(contacto11);
 
-        agenda1.eliminarContacto(contacto1);
+        //agenda1.eliminarContacto(contacto1);
 
-        agenda1.mostrarContactos();
-        agenda1.modificarTelefono("Juan","Diaz","3229999999");
-        agenda1.buscaContacto("Miguel","Diaz");
-        agenda1.espacioslibres();
-        agenda1.agendallena();
+        //agenda1.mostrarContactos();
+        //agenda1.modificarTelefono("Juan","Diaz","3229999999");
+        agenda1.buscaContacto("Marcela","Diaz");
+
+        //agenda1.mostrarContactos();
+        //agenda1.espacioslibres();
+        //agenda1.agendallena();
 
 
         }
