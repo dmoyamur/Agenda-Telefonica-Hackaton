@@ -52,10 +52,7 @@ public class MenuPrincipal {
                     String nombre2 = scanner.nextLine();
                     System.out.println("Ingrese el apellido a eliminar: ");
                     String apellido2 = scanner.nextLine();
-                    System.out.println("Ingrese el telefono a eliminar: ");
-                    long telefono2 = scanner.nextLong();
-                    Contacto cont = new Contacto(nombre2,apellido2,telefono2);
-                    agenda.eliminarContacto(cont);
+                    agenda.eliminarContacto(nombre2, apellido2);
                     break;
                 case 5:
                     System.out.println("Ingrese el nombre del contacto a modificar: ");

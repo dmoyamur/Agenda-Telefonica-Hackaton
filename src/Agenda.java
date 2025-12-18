@@ -1,7 +1,3 @@
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import java.util.ArrayList;
-import java.util.Scanner;
-
 public class Agenda {
     Contacto[] contactos;
     Contacto contacto;
@@ -45,7 +41,7 @@ public class Agenda {
                     }
                 }
                 contactos[posicionVacia] = contacto;
-                System.out.println(contacto.getNombre() + " " + contacto.getApellido() + " se ha agregado satisfactoriamente.");
+                System.out.println("El contacto se ha agregado satisfactoriamente.");
                 espacioslibres();
             }
         }
@@ -135,18 +131,20 @@ public class Agenda {
         }
     }
 
-    public void eliminarContacto(Contacto c) {
+    public void eliminarContacto(String nombre, String apellido) {
         for (int i = 0; i < contactos.length; i++) {
-            if (c.equals(contactos[i])) {
+            if (contactos[i] != null &&
+                    contactos[i].getNombre().equalsIgnoreCase(nombre) &&
+                    contactos[i].getApellido().equalsIgnoreCase(apellido)) {
+
                 contactos[i] = null;
-                System.out.println("Contacto eliminado: " + c.getNombre() + " " + c.getApellido() + " " + c.getTelefono());
-                break;
-            } else {
-                System.out.println("Contacto no encontrado para eliminar");
-                break;
+                System.out.println("Contacto eliminado correctamente: "
+                        + nombre + " " + apellido);
+                espacioslibres();
+                return;
             }
         }
-        espacioslibres();
+        System.out.println("Contacto no encontrado para eliminar.");
     }
 
     public void asignarTamanoAgenda(int cantidad) {
@@ -157,7 +155,5 @@ public class Agenda {
             this.cant = 10;
         }
     }
-
-
 
 }
