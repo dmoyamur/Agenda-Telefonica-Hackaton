@@ -25,6 +25,7 @@ public class Agenda {
 
         if (existeContacto(contacto)){
             System.out.println("Contacto ya existe");
+            return;
         } else {
             for (int i = 0; i < contactos.length; i++) {
                 if (contactos[i] != null) {
@@ -32,21 +33,23 @@ public class Agenda {
                 }
             }
             if (contadorOcupadas >= cant) {
-                //     System.out.println("No hay espacio disponible en la agenda.");
+                agendallena();
             } else {
                 for (int i = 0; i < contactos.length; i++) {
                     if (contactos[i] == null) {
                         contadorVacias++;
                         posicionVacia = i;
+                        break;
                     }
                 }
                 contactos[posicionVacia] = contacto;
+                System.out.println(contacto.getNombre()+" "+ contacto.getApellido()+" se ha agregado satisfactoriamente.");
             }
         }
         }
 
     public void mostrarContactos() {
-        System.out.println("-- AGENDA DE CONTACTOS -- ");
+        System.out.println("\n-- AGENDA DE CONTACTOS -- ");
         boolean hayContactos = false;
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
@@ -54,7 +57,7 @@ public class Agenda {
                 System.out.println(i+1 + " " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
             }
         }
-        if (hayContactos = false) {
+        if (!hayContactos) {
             System.out.println("Aún no tienes contactos en tu agenda");
         }
     }
@@ -66,8 +69,22 @@ public class Agenda {
                 if (contactos[i].getNombre().equalsIgnoreCase(contacto.getNombre()) && contactos[i].getApellido().equalsIgnoreCase(contacto.getApellido())) {
                     return true;
                 }
-            } return false;
+            }
         }
-        return hayContactos;
+        return false;
     }
+
+    public void agendallena(){
+        int contadorOcupadas = 0;
+        for (int i = 0; i < contactos.length; i++) {
+            if (contactos[i] != null) {
+                contadorOcupadas++;
+            }
+        }
+        if (contadorOcupadas == cant) {
+            System.out.println("\nNo hay espacio disponible para nuevos contactos.");
+            System.out.println("Ya ha alcanzado el límite de "+cant+" registros disponibles.");
+        }
+    }
+
 }
