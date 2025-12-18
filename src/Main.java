@@ -4,27 +4,31 @@ import java.util.Scanner;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-            Contacto contacto1 = new Contacto("Luis","Suarez",3152528596L);
-            Contacto contacto2 = new Contacto("Luis","Peña",3208579654L);
-            Contacto contacto3 = new Contacto("Juan","Diaz",3152528596L);
-            Contacto contacto4 = new Contacto("Maria","Diaz",3152528596L);
-            Contacto contacto5 = new Contacto("Marcela","Diaz",3152528596L);
-            Contacto contacto6 = new Contacto("Marcela","Muñoz",3152528596L);
-            Contacto contacto7 = new Contacto("Julian","Diaz",3152528596L);
-            Contacto contacto8 = new Contacto("Mateo","Diaz",3152528596L);
-            Contacto contacto9 = new Contacto("Adrian","Diaz",3152528596L);
-            Contacto contacto10 = new Contacto("Valetina","Diaz",3152528596L);
-            Contacto contacto11 = new Contacto("Miguel","Diaz",3152528596L);
+
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        menuPrincipal.mostrarMenu();
+
+
+            //Contacto contacto1 = new Contacto("Luis","Suarez",3152528596L);
+            //Contacto contacto2 = new Contacto("Luis","Peña",3208579654L);
+            //Contacto contacto3 = new Contacto("Juan","Diaz",3152528596L);
+            //Contacto contacto4 = new Contacto("Maria","Diaz",3152528596L);
+            //Contacto contacto5 = new Contacto("Marcela","Diaz",3152528596L);
+            //Contacto contacto6 = new Contacto("Marcela","Muñoz",3152528596L);
+            //Contacto contacto7 = new Contacto("Julian","Diaz",3152528596L);
+            //Contacto contacto8 = new Contacto("Mateo","Diaz",3152528596L);
+            //Contacto contacto9 = new Contacto("Adrian","Diaz",3152528596L);
+            //Contacto contacto10 = new Contacto("Valetina","Diaz",3152528596L);
+            //Contacto contacto11 = new Contacto("Miguel","Diaz",3152528596L);
 
 
         //Scanner scanner = new Scanner(System.in);
-        Agenda agenda1 = new Agenda();
         //agenda1.menuAgenda();
 
-        agenda1.anadirContacto(contacto1);
-        agenda1.anadirContacto(contacto2);
-        agenda1.anadirContacto(contacto3);
-        agenda1.anadirContacto(contacto4);
+        //agenda1.anadirContacto(contacto1);
+        //agenda1.anadirContacto(contacto2);
+        //agenda1.anadirContacto(contacto3);
+        //agenda1.anadirContacto(contacto4);
         //agenda1.anadirContacto(contacto5);
         //agenda1.anadirContacto(contacto6);
         //agenda1.anadirContacto(contacto7);
@@ -37,7 +41,7 @@ public class Main {
 
         //agenda1.mostrarContactos();
         //agenda1.modificarTelefono("Juan","Diaz","3229999999");
-        agenda1.buscaContacto("Marcela","Diaz");
+        //agenda1.buscaContacto("Marcela","Diaz");
 
         //agenda1.mostrarContactos();
         //agenda1.espacioslibres();
