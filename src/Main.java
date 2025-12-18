@@ -16,7 +16,8 @@ public class Main {
         agenda1.anadirContacto(contacto2);
         agenda1.anadirContacto(contacto3);
         agenda1.anadirContacto(contacto1);
-
+        agenda1.anadirContacto(contacto3);
+        agenda1.anadirContacto(contacto1);
 
         agenda1.mostrarContactos();
 

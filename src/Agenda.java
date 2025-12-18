@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Agenda {
     Contacto[] contactos;
     Contacto contacto;
-    int cant=10;
+    int cant = 10;
 
     public Agenda() {
         contactos = new Contacto[cant];
@@ -19,45 +19,55 @@ public class Agenda {
     }
 
     public void anadirContacto(Contacto contacto) {
-        int contadorVacias=0;
-        int contadorOcupadas=0;
-        int posicionVacia=0;
+        int contadorVacias = 0;
+        int contadorOcupadas = 0;
+        int posicionVacia = 0;
 
-
-        for (int i=0; i<contactos.length; i++) {
-            if (contactos[i] != null) {
-                contadorOcupadas++;
-            }
-        }
-        if (contadorOcupadas >= cant) {
-       //     System.out.println("No hay espacio disponible en la agenda.");
-        } else{
-            for (int i=0; i<contactos.length; i++) {
-                if (contactos[i] == null){
-                contadorVacias++;
-                posicionVacia = i;
+        if (existeContacto(contacto)){
+            System.out.println("Contacto ya existe");
+        } else {
+            for (int i = 0; i < contactos.length; i++) {
+                if (contactos[i] != null) {
+                    contadorOcupadas++;
                 }
             }
-        contactos[posicionVacia] = contacto;
+            if (contadorOcupadas >= cant) {
+                //     System.out.println("No hay espacio disponible en la agenda.");
+            } else {
+                for (int i = 0; i < contactos.length; i++) {
+                    if (contactos[i] == null) {
+                        contadorVacias++;
+                        posicionVacia = i;
+                    }
+                }
+                contactos[posicionVacia] = contacto;
+            }
+        }
+        }
+
+    public void mostrarContactos() {
+        System.out.println("-- AGENDA DE CONTACTOS -- ");
+        boolean hayContactos = false;
+        for (int i = 0; i < contactos.length; i++) {
+            if (contactos[i] != null) {
+                hayContactos = true;
+                System.out.println(i+1 + " " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
+            }
+        }
+        if (hayContactos = false) {
+            System.out.println("Aún no tienes contactos en tu agenda");
         }
     }
 
-//    public void mostrarContactos(){
-//        System.out.println("Tus Contactos: ");
-//        try{
-//            for (int i=0; i<contactos.length; i++) {
-//                System.out.println(i + 1 + " " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
-//        }
-//        } catch (NullPointerException e) {
-//            throw new RuntimeException("No existe");
-//        }
-//    }
-
-    public void existeContacto(Contacto contacto){
-        for (int i=0; i<contactos.length; i++) {
-                if (contactos[i].getNombre().equals(contacto.getNombre()) && contactos[i].getApellido().equals(contacto.getApellido())) {
-                    System.out.println(contacto.getNombre() + " " + contacto.getApellido() + " ya existe en tu agenda");
+    public boolean existeContacto(Contacto contacto) {
+        boolean hayContactos = false;
+        for (int i = 0; i < contactos.length; i++) {
+            if (contactos[i] != null) {
+                if (contactos[i].getNombre().equalsIgnoreCase(contacto.getNombre()) && contactos[i].getApellido().equalsIgnoreCase(contacto.getApellido())) {
+                    return true;
                 }
+            } return false;
         }
+        return hayContactos;
     }
 }
