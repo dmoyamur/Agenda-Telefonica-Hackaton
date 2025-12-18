@@ -32,9 +32,9 @@ public class VentanaPrincipal {
 
 
         //container de contenido
-        JPanel containerLista = new JPanel();
-        containerLista.setLayout(new FlowLayout(FlowLayout.LEFT, 10,5));
-        containerLista.setBackground(Color.GRAY);
+        JPanel containerContenido = new JPanel();
+        containerContenido.setLayout(new FlowLayout(FlowLayout.LEFT, 10,5));
+        containerContenido.setBackground(Color.GRAY);
 
         //Botones
         Button botonVerContactos = new Button("Ver Contactos");
@@ -44,6 +44,7 @@ public class VentanaPrincipal {
             @Override
             public void actionPerformed(ActionEvent e) {
                 JPanel containerAgregar = new JPanel();
+                containerContenido.add(containerAgregar);
                 containerAgregar.setLayout(new FlowLayout(FlowLayout.CENTER, 10, 5));
                 containerAgregar.setBackground(Color.white);
                 System.out.println("Se ha presionado el boton para agregar un nuevo contacto");
@@ -56,7 +57,7 @@ public class VentanaPrincipal {
 
         //Aca agrego los containers a la ventana  ajusto la posicion del container de botones
 
-        ventana.add(containerLista, BorderLayout.CENTER);
+        ventana.add(containerContenido, BorderLayout.CENTER);
         ventana.add(containerBotones, BorderLayout.NORTH);
 
 
