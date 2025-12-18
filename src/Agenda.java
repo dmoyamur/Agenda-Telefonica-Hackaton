@@ -1,4 +1,6 @@
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Agenda {
     Contacto[] contactos;
@@ -44,6 +46,7 @@ public class Agenda {
                 }
                 contactos[posicionVacia] = contacto;
                 System.out.println(contacto.getNombre() + " " + contacto.getApellido() + " se ha agregado satisfactoriamente.");
+                espacioslibres();
             }
         }
     }
@@ -107,26 +110,26 @@ public class Agenda {
 public void modificarTelefono(String nombre, String apellido, String nuevoTelefono) {
 
     for (int i = 0; i < contactos.length; i++) {
-
-        if (nombre.equals(contactos[i].getNombre()) && apellido.equals(contactos[i].getApellido())) {
-
+        if (contactos[i] != null) {
+            if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
             contactos[i].setTelefono(Long.parseLong(nuevoTelefono));
-
-        } else {
-
-            System.out.println("El contacto no existe");
-
+            System.out.println("Telefono modificado satisfactoriamente");
+            }
         }
-
+        else {
+            System.out.println("El contacto no existe");
+        }
     }
 }
 
 
     public void buscaContacto (String nombre, String apellido){
         for (int i = 0; i < contactos.length; i++) {
-            if (nombre.equals(contactos[i].getNombre()) && apellido.equals(contactos[i].getApellido())) {
-                System.out.println(contactos[i].getTelefono());
-            } else {
+            if (contactos[i] != null) {
+                if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
+                    System.out.println("El contacto existe y su teléfono es: "+contactos[i].getTelefono());
+                }
+            }else {
                 System.out.println("Contacto no encontrado");
             }
         }
@@ -141,6 +144,28 @@ public void modificarTelefono(String nombre, String apellido, String nuevoTelefo
             } else {
                 System.out.println("Contacto no encontrado");
             }
-        } mostrarContactos();
+        } espacioslibres();
+    }
+
+    //public void cantContactos(int cant){
+    //    if (cant=0){
+    //        cant =
+    //    }
+    //}
+
+
+    public void menu (){
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("-- AGENDA TELEFONICA --");
+        System.out.println("-- OPCIONES --");
+        System.out.println("1. Agregar Contacto");
+        System.out.println("2. Mostrar Contactos");
+        System.out.println("3. Buscar Contacto");
+        System.out.println("4. Eliminar Contacto");
+        System.out.println("5. Modificar Teléfono");
+        System.out.println("6. SALIR");
+
+
     }
 }
