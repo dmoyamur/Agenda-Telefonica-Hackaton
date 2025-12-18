@@ -23,7 +23,7 @@ public class Agenda {
         int contadorOcupadas = 0;
         int posicionVacia = 0;
 
-        if (existeContacto(contacto)){
+        if (existeContacto(contacto)) {
             System.out.println("Contacto ya existe");
             return;
         } else {
@@ -43,10 +43,10 @@ public class Agenda {
                     }
                 }
                 contactos[posicionVacia] = contacto;
-                System.out.println(contacto.getNombre()+" "+ contacto.getApellido()+" se ha agregado satisfactoriamente.");
+                System.out.println(contacto.getNombre() + " " + contacto.getApellido() + " se ha agregado satisfactoriamente.");
             }
         }
-        }
+    }
 
     public void mostrarContactos() {
         System.out.println("\n-- AGENDA DE CONTACTOS -- ");
@@ -54,7 +54,7 @@ public class Agenda {
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
                 hayContactos = true;
-                System.out.println(i+1 + " " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
+                System.out.println(i + 1 + " " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
             }
         }
         if (!hayContactos) {
@@ -74,7 +74,7 @@ public class Agenda {
         return false;
     }
 
-    public void agendallena(){
+    public void agendallena() {
         int contadorOcupadas = 0;
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
@@ -83,8 +83,25 @@ public class Agenda {
         }
         if (contadorOcupadas == cant) {
             System.out.println("\nNo hay espacio disponible para nuevos contactos.");
-            System.out.println("Ya ha alcanzado el límite de "+cant+" registros disponibles.");
+            System.out.println("Ya ha alcanzado el límite de " + cant + " registros disponibles.");
         }
     }
 
+    public void espacioslibres() {
+        int contadorOcupadas = 0;
+        int libres = 0;
+        for (int i = 0; i < contactos.length; i++) {
+            if (contactos[i] != null) {
+                contadorOcupadas++;
+                libres = cant - contadorOcupadas;
+            }
+        }
+        if (contadorOcupadas < cant) {
+            ;
+            System.out.println("\nTienes " + libres + " espacios disponibles para agregar contactos");
+        } else {
+            agendallena();
+        }
+    }
 }
+
