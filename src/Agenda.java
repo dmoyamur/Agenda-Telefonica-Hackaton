@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Agenda {
     Contacto[] contactos;
     Contacto contacto;
@@ -20,10 +22,9 @@ public class Agenda {
         int contadorVacias = 0;
         int contadorOcupadas = 0;
         int posicionVacia = 0;
-
         if (existeContacto(contacto)) {
+            System.out.println("\n-------------------------------------");
             System.out.println("Contacto ya existe");
-            return;
         } else {
             for (int i = 0; i < contactos.length; i++) {
                 if (contactos[i] != null) {
@@ -41,6 +42,7 @@ public class Agenda {
                     }
                 }
                 contactos[posicionVacia] = contacto;
+                System.out.println("\n-------------------------------------");
                 System.out.println("El contacto se ha agregado satisfactoriamente.");
                 espacioslibres();
             }
@@ -53,10 +55,11 @@ public class Agenda {
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
                 hayContactos = true;
-                System.out.println(i + 1 + " " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
+                System.out.println("- " + contactos[i].getNombre() + " " + contactos[i].getApellido() + " : " + contactos[i].getTelefono());
             }
         }
         if (!hayContactos) {
+            System.out.println("\n-------------------------------------");
             System.out.println("Aún no tienes contactos en tu agenda");
         }
     }
@@ -81,7 +84,8 @@ public class Agenda {
             }
         }
         if (contadorOcupadas == cant) {
-            System.out.println("\nNo hay espacio disponible para nuevos contactos.");
+            System.out.println("\n-------------------------------------");
+            System.out.println("No hay espacio disponible para nuevos contactos.");
             System.out.println("Ya ha alcanzado el límite de " + cant + " registros disponibles.");
         }
     }
@@ -97,6 +101,7 @@ public class Agenda {
         }
         if (contadorOcupadas < cant) {
             ;
+            System.out.println("\n-------------------------------------");
             System.out.println("\nTienes " + libres + " espacios disponibles para agregar contactos");
         } else {
             agendallena();
@@ -109,9 +114,12 @@ public class Agenda {
             if (contactos[i] != null) {
                 if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
                     contactos[i].setTelefono(Long.parseLong(nuevoTelefono));
+                    System.out.println("\n-------------------------------------");
                     System.out.println("Telefono modificado satisfactoriamente");
+                    continue;
                 }
             } else {
+                System.out.println("\n-------------------------------------");
                 System.out.println("El contacto no existe");
                 break;
             }
@@ -123,9 +131,12 @@ public class Agenda {
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
                 if (contactos[i].getNombre().equalsIgnoreCase(nombre) && contactos[i].getApellido().equalsIgnoreCase(apellido)) {
+                    System.out.println("\n-------------------------------------");
                     System.out.println("El contacto existe y su teléfono es: " + contactos[i].getTelefono());
+                    break;
                 }
             } else {
+                System.out.println("\n-------------------------------------");
                 System.out.println("Contacto no encontrado en la busqueda");
                 break;
             }
@@ -139,21 +150,32 @@ public class Agenda {
                     contactos[i].getApellido().equalsIgnoreCase(apellido)) {
 
                 contactos[i] = null;
+                System.out.println("\n-------------------------------------");
                 System.out.println("Contacto eliminado correctamente: "
                         + nombre + " " + apellido);
                 espacioslibres();
                 return;
             }
         }
+        System.out.println("\n-------------------------------------");
         System.out.println("Contacto no encontrado para eliminar.");
     }
 
-    public void asignarTamanoAgenda(int cantidad) {
+    public void asignarTamanoAgenda() {
+        System.out.println("Asigne el tamaño de la agenda si deseas un valor diferente a 10 registros: ");
+        System.out.println("Si ingresa letras, símbolos o deja vacío el campo se tomará por defecto los 10 registros: ");
+        Scanner scanner = new Scanner(System.in);
+        String entrada = scanner.nextLine();
+        int cantidad;
+        try {
+            cantidad = Integer.parseInt(entrada);
+        } catch (NumberFormatException e) {
+            System.out.println("Ingresó letras y/o símbolos.");
+            cantidad = 10;
+        }
         if (cantidad > 0) {
-            System.out.println("Asigne el tamaño de la agenda si deseas un valor diferente a 10 registros: ");
             this.cant = cantidad;
-        } else {
-            this.cant = 10;
+            System.out.println("Se asignó la cantidad de: " + cantidad + " contactos");
         }
     }
 

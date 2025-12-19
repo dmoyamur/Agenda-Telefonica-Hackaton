@@ -9,11 +9,11 @@ public class MenuPrincipal {
 
     public void mostrarMenu(){
         Agenda agenda = new Agenda();
-
+        agenda.asignarTamanoAgenda();
         Scanner scanner=new Scanner(System.in);
-        int opcion;
+        int opcion = 0;
         do {
-            System.out.println("===========================");
+            System.out.println("\n===========================");
             System.out.println("-- AGENDA TELEFONICA --");
             System.out.println("-- OPCIONES --");
             System.out.println("1. Agregar Contacto");
@@ -23,19 +23,31 @@ public class MenuPrincipal {
             System.out.println("5. Modificar Teléfono");
             System.out.println("6. SALIR");
             System.out.println("Seleccione una opción del menú: ");
-            opcion=scanner.nextInt();
-            scanner.nextLine();
-
+            String entrada = scanner.nextLine();
+            try {
+                opcion = Integer.parseInt(entrada);
+            } catch (NumberFormatException e) {
+                opcion = 0;
+            }
             switch (opcion){
                 case 1:
-                    System.out.println("Ingrese el nombre del contacto a crear: ");
-                    String nombre = scanner.nextLine();
-                    System.out.println("Ingrese el apellido del contacto a crear: ");
-                    String apellido = scanner.nextLine();
-                    System.out.println("Ingrese el número de teléfono: ");
-                    long telefono = scanner.nextLong();
-                    Contacto c = new Contacto(nombre,apellido,telefono);
-                    agenda.anadirContacto(c);
+                    boolean info_valida =false;
+                    while(!info_valida){
+                        System.out.println("Ingrese el nombre del contacto a crear: ");
+                        String nombre = scanner.nextLine();
+                        System.out.println("Ingrese el apellido del contacto a crear: ");
+                        String apellido = scanner.nextLine();
+                        System.out.println("Ingrese el número de teléfono: ");
+                        String tel = scanner.nextLine();
+                        if (!nombre.trim().isEmpty() && !apellido.trim().isEmpty() && tel.length() == 10) {
+                            long telefono = Long.parseLong(tel);
+                            Contacto c = new Contacto(nombre, apellido, telefono);
+                            agenda.anadirContacto(c);
+                            info_valida = true;
+                        }else{
+                            System.out.println("El nombre y apellido no pueden estar vacios y el teléfono debe tener 10 dígitos");
+                        }
+                    }
                     break;
                 case 2:
                     agenda.mostrarContactos();
@@ -62,9 +74,13 @@ public class MenuPrincipal {
                     System.out.println("Ingrese el nuevo teléfono: ");
                     String nuevoTelefono = scanner.nextLine();
                     agenda.modificarTelefono(nombre3, apellido3, nuevoTelefono);
+                    scanner.nextLine();
+                    break;
+                case 6:
                     break;
                 default:
-                    System.out.println("Opción Inválida");
+                    System.out.println("Opción inválida. Intente de nuevo");
+                    break;
             }
         }while(opcion!=6);
         System.out.println("Gracias por usar nuestros servicios.");
