@@ -20,14 +20,15 @@ public class Agenda {
         return contactos;
     }
 
-    public void anadirContacto(Contacto contacto) {
+    public String anadirContacto(Contacto contacto) {
         int contadorVacias = 0;
         int contadorOcupadas = 0;
         int posicionVacia = 0;
+        String existe="";
 
         if (existeContacto(contacto)) {
-            System.out.println("Contacto ya existe");
-            return;
+
+            existe = "Contacto ya existe";
         } else {
             for (int i = 0; i < contactos.length; i++) {
                 if (contactos[i] != null) {
@@ -49,6 +50,7 @@ public class Agenda {
                 espacioslibres();
             }
         }
+        return existe;
     }
 
     public void mostrarContactos() {
@@ -77,8 +79,9 @@ public class Agenda {
         return false;
     }
 
-    public void agendallena() {
+    public boolean agendallena() {
         int contadorOcupadas = 0;
+        boolean estallena = false;
         for (int i = 0; i < contactos.length; i++) {
             if (contactos[i] != null) {
                 contadorOcupadas++;
@@ -87,7 +90,10 @@ public class Agenda {
         if (contadorOcupadas == cant) {
             System.out.println("\nNo hay espacio disponible para nuevos contactos.");
             System.out.println("Ya ha alcanzado el límite de " + cant + " registros disponibles.");
+            estallena = true;
         }
+        return estallena;
+
     }
 
     public void espacioslibres() {

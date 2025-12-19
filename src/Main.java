@@ -1,5 +1,3 @@
-import interaz.VentanaPrincipal;
-
 import javax.swing.*;
 import java.util.Scanner;
 
@@ -8,13 +6,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String[] args) {
 
-        SwingUtilities.invokeLater(new Runnable(){
-            @Override
-            public void run(){
-                VentanaPrincipal agenda = new VentanaPrincipal();
-
-            }
-        });
+        /*
 
             Contacto contacto1 = new Contacto("Luis","Suarez",3152528596L);
             Contacto contacto2 = new Contacto("Luis","Peña",3208579654L);
@@ -52,8 +44,15 @@ public class Main {
         //agenda1.mostrarContactos();
         //agenda1.espacioslibres();
         //agenda1.agendallena();
+*/
+        //Este es el metodo que hace que se lance  o corra la interfaz
+        SwingUtilities.invokeLater(new Runnable(){
+            @Override
+            public void run(){
+                //VentanaPrincipal agenda = new VentanaPrincipal();
+                VentanaInicio crearAgenda = new VentanaInicio();
 
-
-
-        }
+            }
+        });
+    }
 }
